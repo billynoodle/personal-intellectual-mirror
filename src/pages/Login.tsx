@@ -1,14 +1,16 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '@/features/auth/hooks/useAuth'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card'
+import { Alert, AlertDescription } from '@/components/ui/alert'
 
 export const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
   const { signIn } = useAuth()
   const navigate = useNavigate()
 
@@ -18,8 +20,7 @@ export const Login = () => {
       await signIn(email, password)
       navigate('/')
     } catch (error) {
-      console.error('Login error:', error)
-      // Add proper error handling here
+      setError('Invalid credentials. Please try again.')
     }
   }
 
@@ -27,10 +28,16 @@ export const Login = () => {
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-center">Personal Intellectual Mirror</CardTitle>
+          <CardTitle className="text-center">Sign In</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
+            {error && (
+              <Alert variant="destructive">
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+            
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -38,6 +45,7 @@ export const Login = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
                 required
               />
             </div>
@@ -49,6 +57,7 @@ export const Login = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
                 required
               />
             </div>
@@ -58,6 +67,14 @@ export const Login = () => {
             </Button>
           </form>
         </CardContent>
+        <CardFooter className="flex justify-center">
+          <p className="text-sm text-muted-foreground">
+            Don't have an account?{' '}
+            <Link to="/signup" className="text-primary hover:underline">
+              Sign up
+            </Link>
+          </p>
+        </CardFooter>
       </Card>
     </div>
   )
