@@ -1,3 +1,4 @@
+import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { AuthGuard } from './features/auth/components/AuthGuard'
 import { Dashboard } from './pages/Dashboard'
