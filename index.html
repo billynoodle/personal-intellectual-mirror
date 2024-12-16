@@ -8,19 +8,74 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin: 0;
+            margin: 0 auto;
             padding: 20px;
+            max-width: 800px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         h1 {
             color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #444;
+            margin-top: 30px;
         }
         p {
             color: #666;
         }
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        .reading-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .reading-list li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: white;
+            border-left: 3px solid #333;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Intellectual Mirror</h1>
-    <p>This is a space where I reflect on ideas and share my thoughts.</p>
+    <div class="container">
+        <h1>Welcome to My Intellectual Mirror</h1>
+        
+        <div class="section">
+            <h2>About Me</h2>
+            <p>A passionate thinker dedicated to exploring ideas and sharing insights. This space serves as a reflection of my intellectual journey and ongoing pursuit of knowledge.</p>
+        </div>
+
+        <div class="section">
+            <h2>Current Thoughts</h2>
+            <p>Exploring the intersection of technology and philosophy, particularly how artificial intelligence is reshaping our understanding of consciousness and creativity.</p>
+        </div>
+
+        <div class="section">
+            <h2>Reading List</h2>
+            <ul class="reading-list">
+                <li>"Thinking, Fast and Slow" by Daniel Kahneman</li>
+                <li>"Gödel, Escher, Bach" by Douglas Hofstadter</li>
+                <li>"The Structure of Scientific Revolutions" by Thomas Kuhn</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Projects</h2>
+            <p>Currently working on a series of essays examining the role of metacognition in learning and personal development. Watch this space for updates on this and other intellectual pursuits.</p>
+        </div>
+    </div>
 </body>
 </html>
